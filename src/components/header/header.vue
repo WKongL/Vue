@@ -11,7 +11,8 @@
 				</div>
 				<div class="description">{{seller.description}}/{{seller.deliveryTime}}分钟到达</div>
 				<div class="support" v-if="seller.supports">
-					<span class="icon" :class="classMap[seller.supports[0].type]"></span>
+					<!-- <span class="icon" :class="classMap[seller.supports[0].type]"></span> -->
+					<supporticon :format="1" :supportType="seller.supports[0].type"></supporticon>
 					<span class="text">{{seller.supports[0].description}}</span>
 				</div>
 			</div>
@@ -40,7 +41,8 @@
 					</div>
 					<ul class="supports" v-if="seller.supports">
 						<li class="support-item" v-for="item in seller.supports">
-							<span class="icon" :class="classMap[item.type]"></span>
+							<!-- <span class="icon" :class="classMap[item.type]"></span> -->
+							<supporticon :format="2" :supportType="item.type"></supporticon>
 							<span class="text">{{item.description}}</span>
 						</li>
 					</ul>
@@ -62,6 +64,7 @@
 <script type="text/ecmascript-6">
 	import star from 'components/star/star';
 	import littleTitle from 'components/littleTitle/littleTitle';
+	import supportIcon from 'components/supportIcon/supportIcon';
 
 	export default{
 		props: {
@@ -82,12 +85,10 @@
 				this.detailShow = false;
 			}
 		},
-		created() {
-			this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-		},
 		components: {
 			star,
-			'littletitle': littleTitle
+			'littletitle': littleTitle,
+			'supporticon': supportIcon
 		}
 	};
 </script>
@@ -134,23 +135,6 @@
 					font-size: 12px
 				.support
 					margin-bottom: 2px
-					.icon
-						display: inline-block
-						vertical-align: top
-						width: 12px
-						height: 12px
-						background-size: 12px 12px
-						background-repeat: no-repeat
-						&.decrease
-							bg-image('images/decrease_1')
-						&.discount
-							bg-image('images/discount_1')
-						&.guarantee
-							bg-image('images/guarantee_1')
-						&.invoice
-							bg-image('images/invoice_1')
-						&.special
-							bg-image('images/special_1')
 					.text
 						margin-left: 4px
 						line-height: 12px
@@ -256,25 +240,8 @@
 							font-size: 0
 							&.last-child
 								margin-bottom: 0
-							.icon
-								display: inline-block
-								vertical-align: top
-								width: 16px
-								height: 16px
-								margin-right: 6px
-								background-size: 16px 16px
-								background-repeat: no-repeat
-								&.decrease
-									bg-image('images/decrease_2')
-								&.discount
-									bg-image('images/discount_2')
-								&.guarantee
-									bg-image('images/guarantee_2')
-								&.invoice
-									bg-image('images/invoice_2')
-								&.special
-									bg-image('images/special_2')
 							.text
+								margin-left: 6px
 								line-height: 16px
 								font-size: 12px
 								font-weight: 200

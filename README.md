@@ -1,6 +1,6 @@
 # takeaway
 
-> Takeaway App
+> 学习vue.js模仿外卖App
 
 ## Build Setup
 
