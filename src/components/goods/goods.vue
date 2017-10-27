@@ -12,7 +12,7 @@
 				<li class="food-list food-list-hook" v-for="good in goods" >
 					<h1 class="title">{{good.name}}</h1>
 					<ul>
-						<li class="food-item border-1px" v-for="food in good.foods">
+						<li class="food-item border-1px" v-for="food in good.foods" @click="foodClick(food, $event)">
 							<div class="icon">
 								<img :src="food.icon">
 							</div>
@@ -34,16 +34,16 @@
 				</li>
 			</ul>
 		</div>
-	</div>
-	<div class="footer">
 		<shopcart v-ref:shopcart :min-price="seller.minPrice" :delivery-price="seller.deliveryPrice" :select-foods="selectFoods"></shopcart>
 	</div>
+	<food-detail :food="selectedFood" v-ref:food-detail></food-detail>
 </template>
 
 <script type="text/ecmascript-6">
 	import supportIcon from 'components/supportIcon/supportIcon';
 	import shopcart from 'components/shopcart/shopcart';
 	import cartcontrol from 'components/cartcontrol/cartcontrol';
+	import foodDetail from 'components/foodDetail/foodDetail';
 	import BScroll from 'better-scroll';
 
 	const RES_OK = 0;
@@ -57,7 +57,8 @@
 			return {
 				goods: [],
 				listHeight: [],
-				scrollY: 0
+				scrollY: 0,
+				selectedFood: {}
 			};
 		},
 		created() {
@@ -113,6 +114,13 @@
 				let foodItem = foodList[index];
 				// 跳转到当前点击项目所对应的食物区域
 				this.foodScroll.scrollToElement(foodItem, 300);
+			},
+			foodClick(food, event) {
+				if (!event._constructed) {
+					return;
+				}
+				this.selectedFood = food;
+				this.$refs.foodDetail.show();
 			}
 		},
 		computed: {
@@ -146,7 +154,8 @@
 		components: {
 			'supporticon': supportIcon,
 			shopcart,
-			cartcontrol
+			cartcontrol,
+			foodDetail
 		},
 		events: {
 			'cart.add'(target) {

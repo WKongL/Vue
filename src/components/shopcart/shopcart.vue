@@ -130,15 +130,15 @@
 				// 已选择食物，则在已折叠状态下隐藏列表，未折叠显示列表
 				let show = !this.fold;
 				if (show) {
-					if (!this.listScroll) {
-						this.$nextTick(() => {
+					this.$nextTick(() => {
+						if (!this.listScroll) {
 							this.listScroll = new BScroll(this.$els.listContent, {
 								click: true
 							});
-						});
-					} else {
-						this.listScroll.refresh();
-					}
+						} else {
+							this.listScroll.refresh();
+						}
+					});
 				}
 				return show;
 			}
