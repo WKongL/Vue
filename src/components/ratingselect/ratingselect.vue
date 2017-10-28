@@ -34,10 +34,12 @@
 			},
 			desc: {
 				type: Object,
-				default: {
-					positive: '满意',
-					negative: '不满意',
-					all: '全部'
+				default() {
+					return {
+						positive: '满意',
+						negative: '不满意',
+						all: '全部'
+					};
 				}
 			}
 		},

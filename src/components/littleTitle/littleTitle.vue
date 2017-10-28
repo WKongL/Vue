@@ -1,5 +1,5 @@
 <template>
-	<div class="title">
+	<div class="title-wrapper">
 		<div class="line"></div>
 		<div class="text">{{title}}</div>
 		<div class="line"></div>
@@ -17,7 +17,7 @@
 </script>
 
 <style lang="stylus" cel="stylesheet/stylus">
-	.title
+	.title-wrapper
 		display: flex
 		.line
 			flex: 1
