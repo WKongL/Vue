@@ -30,7 +30,7 @@ router.map({
 	}
 });
 
-router.go('/goods');
+// router.go('/goods');
 router.start(app, '#app');
 
 /* eslint-disable no-new */

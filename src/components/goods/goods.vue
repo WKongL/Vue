@@ -160,6 +160,9 @@
 		events: {
 			'cart.add'(target) {
 				this._drop(target);
+			},
+			'food.change'(food) {
+				this.selectedFood = food;
 			}
 		}
 	};
