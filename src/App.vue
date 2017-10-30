@@ -33,16 +33,27 @@
 		},
 		created() {
 			// 获取seller数据
-			this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
-				// success
-				response = response.body;
-				if (response.error === RES_OK) {
-					// this.seller = response.data;
-          this.seller = Object.assign({}, this.seller, response.data);
-				}
-			}, (response) => {
-				// error
-			});
+      if (process.env.NODE_ENV === 'development') {
+        this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
+          // success
+          response = response.body;
+          if (response.error === RES_OK) {
+            // this.seller = response.data;
+            this.seller = Object.assign({}, this.seller, response.data);
+          }
+        }, (response) => {
+          // error
+        });
+      } else {
+        this.$http.get('https://wkongl.github.io/Vue-takeaway/data.json').then((response) => {
+          // success
+          response = response.body;
+          // this.seller = response.data;
+          this.seller = Object.assign({}, this.seller, response.seller);
+        }, (response) => {
+          // error
+        });
+      }
 		},
 		components: {
 			'v-header': header

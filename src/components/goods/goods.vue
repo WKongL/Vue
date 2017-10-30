@@ -62,16 +62,27 @@
 			};
 		},
 		created() {
-			this.$http.get('/api/goods').then((response) => {
-				var result = response.body;
-				if (result.error === RES_OK) {
-					this.goods = result.data;
+			if (process.env.NODE_ENV === 'development') {
+				this.$http.get('/api/goods').then((response) => {
+					var result = response.body;
+					if (result.error === RES_OK) {
+						this.goods = result.data;
+						this.$nextTick(() => {
+							this._initScroll();
+							this._calculateHeight();
+						});
+					}
+				});
+			} else {
+				this.$http.get('https://wkongl.github.io/Vue-takeaway/data.json').then((response) => {
+					var result = response.body;
+					this.goods = result.goods;
 					this.$nextTick(() => {
 						this._initScroll();
 						this._calculateHeight();
 					});
-				}
-			});
+				});
+			}
 		},
 		methods: {
 			_initScroll() {
