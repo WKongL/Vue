@@ -162,7 +162,9 @@
 				this._drop(target);
 			},
 			'food.change'(food) {
-				this.selectedFood = food;
+				if (this.selectedFood !== food) {
+					this.selectedFood = food;
+				}
 			}
 		}
 	};
