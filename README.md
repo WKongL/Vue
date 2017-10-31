@@ -6,6 +6,20 @@
 
 ## Build Setup
 
+<img src="https://wkongl.github.io/Vue-takeaway/static/goods-1.png" width="250" height="450">  <img src="https://wkongl.github.io/Vue-takeaway/static/goods-2.png" width="250" height="450">  <img src="https://wkongl.github.io/Vue-takeaway/static/bulletin.png" width="250" height="450">  <img src="https://wkongl.github.io/Vue-takeaway/static/ratings.png" width="250" height="450">  <img src="https://wkongl.github.io/Vue-takeaway/static/seller.png" width="250" height="450">  
+
+##技术栈
+
+- 本项目采用`webpack`自动化构建工具，前端使用`vue-cli`+`vue-router`,`stylus`预编译CSS,后端使用Express起一个本地测试服务器抓取本地json作为模拟数据。
+
+##项目收货
+
+1. vue的响应式和组件化特点
+2. 学会sticky footer的应用
+3. 手机屏1px border的实现
+
+
+
 ``` bash
 # install dependencies
 npm install
