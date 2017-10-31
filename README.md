@@ -2,6 +2,8 @@
 
 > 学习vue.js模仿外卖App
 
+## 效果图预览
+
 ## Build Setup
 
 ``` bash

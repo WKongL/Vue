@@ -249,8 +249,8 @@
 					.bulletin
 						width: 80%
 						margin: 0 auto
-						padding: 0 12px
 						.content
+							padding: 0 12px
 							line-height: 24px
 							font-size: 12px
 							font-weight: 200
