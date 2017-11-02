@@ -1,4 +1,4 @@
-# takeaway
+# takeaway-2.0
 
 > 学习vue.js模仿外卖App
 
